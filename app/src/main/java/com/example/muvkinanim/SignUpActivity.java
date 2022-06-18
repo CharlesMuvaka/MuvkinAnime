@@ -41,9 +41,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         signBind.btnSubmit.setOnClickListener(this);
         createAuthListener();
-
     }
-
     private void createAuthListener() {
         myAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -55,22 +53,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(mainIntent);
                     finish();
-
                 }
             }
         };
     }
-
     @Override
     public void onClick(View v) {
-
         if (v == signBind.btnSubmit){
-
             createUser();
         }
-
     }
-
     private void createUser() {
         String userName = signBind.userName.getEditText().getText().toString().trim();
         String userPhone = signBind.userPhone.getEditText().getText().toString().trim();
@@ -78,13 +70,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         String password = signBind.userSeat.getEditText().getText().toString().trim();
         String pass = signBind.userCoach.getEditText().getText().toString().trim();
 
-
-
-
         if (!Validator.validateName(signBind.userName) || !Validator.validatePhone(signBind.userPhone) || !Validator.valiadateEmail(signBind.userTicket) || !Validator.validatePassword(signBind.userSeat) || !Validator.confirmPassword(signBind.userCoach, signBind.userSeat) ){
             return;
         }
-
         myDataEditor.putString(Constants.USERNAME, userName).apply();
         myDataEditor.putString(Constants.USER_PASSWORD, password).apply();
 
@@ -97,20 +85,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 User newUser = new User(userId, userName,userPhone,userEmail);
                 ref.child(userId).setValue(newUser);
 
-
                 UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(userName).build();
                 user.updateProfile(request).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(SignUpActivity.this, "Successfully created", Toast.LENGTH_LONG
                         ).show();
-
                     }
                 });
-
                 Toast.makeText(this, "Successfully created " + task.getResult().getUser().getDisplayName(), Toast.LENGTH_LONG
                 ).show();
-
             }else{
                 Toast.makeText(this, "User Creation Failed", Toast.LENGTH_LONG).show();
             }
