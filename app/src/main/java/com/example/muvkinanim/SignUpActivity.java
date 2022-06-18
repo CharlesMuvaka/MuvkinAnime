@@ -14,6 +14,8 @@ import com.example.muvkinanim.databinding.ActivitySignUpBinding;
 import com.example.muvkinanim.models.Constants;
 import com.example.muvkinanim.models.User;
 import com.example.muvkinanim.models.Validator;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -97,7 +99,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
 
                 UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(userName).build();
-                user.updateProfile(request);
+                user.updateProfile(request).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(SignUpActivity.this, "Successfully created", Toast.LENGTH_LONG
+                        ).show();
+
+                    }
+                });
 
                 Toast.makeText(this, "Successfully created " + task.getResult().getUser().getDisplayName(), Toast.LENGTH_LONG
                 ).show();
