@@ -5,11 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 
 import com.example.muvkinanim.databinding.ActivitySignUpBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     ActivitySignUpBinding signBind;
     FirebaseAuth myAuth;
     FirebaseAuth.AuthStateListener myAuthListener;
@@ -25,6 +26,11 @@ public class SignUpActivity extends AppCompatActivity {
         myAuth = FirebaseAuth.getInstance();
         myData = PreferenceManager.getDefaultSharedPreferences(this);
         myDataEditor = myData.edit();
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }
