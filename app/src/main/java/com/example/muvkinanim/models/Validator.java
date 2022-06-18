@@ -1,4 +1,4 @@
-package com.example.muvkinanim;
+package com.example.muvkinanim.models;
 
 import android.util.Patterns;
 
