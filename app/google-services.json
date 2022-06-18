@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "419966203206",
+    "project_id": "muvkinanim",
+    "storage_bucket": "muvkinanim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419966203206:android:8af6f83890c9c4d6d42147",
+        "android_client_info": {
+          "package_name": "com.example.muvkinanim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419966203206-2rhv6e17lrc1i6q0e9f78boilgplug36.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb_6C5UnM59v4eD6jfv3VIfEnP-9pETPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419966203206-2rhv6e17lrc1i6q0e9f78boilgplug36.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
