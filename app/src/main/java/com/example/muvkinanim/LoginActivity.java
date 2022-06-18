@@ -16,6 +16,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         logBind = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(logBind.getRoot());
+
+        logBind.btnSign.setOnClickListener(this);
     }
 
     @Override
