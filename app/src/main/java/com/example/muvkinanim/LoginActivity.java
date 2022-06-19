@@ -1,6 +1,6 @@
 package com.example.muvkinanim;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -36,17 +36,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void createAuthListener() {
-         myAuthListener = new FirebaseAuth.AuthStateListener() {
-             @Override
-             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                 FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-                 if (currentUser != null){
-                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                 }else{
-                     Toast.makeText(LoginActivity.this, "User doesn't exist", Toast.LENGTH_SHORT).show();
-                 }
-
+         myAuthListener = firebaseAuth -> {
+             FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+             if (currentUser != null){
+                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
+             }else{
+                 Toast.makeText(LoginActivity.this, "User doesn't exist", Toast.LENGTH_SHORT).show();
              }
+
          };
     }
 
@@ -75,5 +72,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        myAuth.addAuthStateListener(myAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        myAuth.removeAuthStateListener(myAuthListener);
     }
 }
