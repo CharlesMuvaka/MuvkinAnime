@@ -75,6 +75,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
         myDataEditor.putString(Constants.USERNAME, userName).apply();
         myDataEditor.putString(Constants.USER_PASSWORD, password).apply();
+        myDataEditor.putString(Constants.USER_EMAIL, userEmail).apply();
 
         myAuth.createUserWithEmailAndPassword(userEmail, password).addOnCompleteListener(this, task -> {
             if (task.isSuccessful()){
