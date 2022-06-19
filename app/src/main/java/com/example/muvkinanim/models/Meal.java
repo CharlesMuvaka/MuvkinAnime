@@ -1,13 +1,13 @@
-package com.example.muvkintours.models;
+package com.example.muvkinanim.models;
 
 
-    import com.google.gson.annotations.Expose;
-    import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    import java.io.Serializable;
+import java.io.Serializable;
 
 
-public class Meals implements Serializable {
+public class Meal implements Serializable {
 
     @SerializedName("idMeal")
     @Expose
@@ -173,7 +173,7 @@ public class Meals implements Serializable {
      * No args constructor for use in serialization
      *
      */
-    public Meals() {
+    public Meal() {
     }
 
     /**
@@ -232,7 +232,7 @@ public class Meals implements Serializable {
      * @param strMeasure14
      * @param strMeasure15
      */
-    public Meals(String idMeal, String strMeal, Object strDrinkAlternate, String strCategory, String strArea, String strInstructions, String strMealThumb, String strTags, String strYoutube, String strIngredient1, String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7, String strIngredient8, String strIngredient9, String strIngredient10, String strIngredient11, String strIngredient12, String strIngredient13, String strIngredient14, String strIngredient15, Object strIngredient16, Object strIngredient17, Object strIngredient18, Object strIngredient19, Object strIngredient20, String strMeasure1, String strMeasure2, String strMeasure3, String strMeasure4, String strMeasure5, String strMeasure6, String strMeasure7, String strMeasure8, String strMeasure9, String strMeasure10, String strMeasure11, String strMeasure12, String strMeasure13, String strMeasure14, String strMeasure15, Object strMeasure16, Object strMeasure17, Object strMeasure18, Object strMeasure19, Object strMeasure20, Object strSource, Object strImageSource, Object strCreativeCommonsConfirmed, Object dateModified) {
+    public Meal(String idMeal, String strMeal, Object strDrinkAlternate, String strCategory, String strArea, String strInstructions, String strMealThumb, String strTags, String strYoutube, String strIngredient1, String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7, String strIngredient8, String strIngredient9, String strIngredient10, String strIngredient11, String strIngredient12, String strIngredient13, String strIngredient14, String strIngredient15, Object strIngredient16, Object strIngredient17, Object strIngredient18, Object strIngredient19, Object strIngredient20, String strMeasure1, String strMeasure2, String strMeasure3, String strMeasure4, String strMeasure5, String strMeasure6, String strMeasure7, String strMeasure8, String strMeasure9, String strMeasure10, String strMeasure11, String strMeasure12, String strMeasure13, String strMeasure14, String strMeasure15, Object strMeasure16, Object strMeasure17, Object strMeasure18, Object strMeasure19, Object strMeasure20, Object strSource, Object strImageSource, Object strCreativeCommonsConfirmed, Object dateModified) {
         super();
         this.idMeal = idMeal;
         this.strMeal = strMeal;
