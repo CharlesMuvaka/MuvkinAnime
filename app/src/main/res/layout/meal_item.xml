@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/gridLayout"
+    android:paddingBottom="10dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/main"
+    android:backgroundTint="@color/purple_500"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main"
+        android:id="@+id/mealImage"
+        android:src="@drawable/samosa"
+        android:layout_marginStart="8dp"
+        android:adjustViewBounds="true"
+        app:shapeAppearanceOverlay="@style/radii"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mealName"
+        app:layout_constraintBottom_toTopOf="@id/rating"
+        app:layout_constraintRight_toLeftOf="@id/mealName"/>
+
+    <TextView
+        android:id="@+id/mealName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloo"
+        android:text="PIlau"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/mealImage"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+
+    <TextView
+        android:id="@+id/mealPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloo"
+        android:text="This is a boy This is a boy This is a boy This is a boy This is a boy This is a boy"
+        android:maxLength="100"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toRightOf="@id/mealImage"
+        app:layout_constraintTop_toBottomOf="@id/mealName"
+        app:layout_constraintBottom_toTopOf="@id/price"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <RatingBar
+        android:id="@+id/rating"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:rating="3.5"
+        app:layout_constraintRight_toLeftOf="@id/price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mealImage"
+        app:layout_constraintBottom_toTopOf="@id/readMore"/>
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Ksh. 350/="
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/save"
+        app:layout_constraintLeft_toRightOf="@+id/rating"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mealImage" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/readMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_500"
+        android:text="Read More"
+        android:layout_marginStart="8dp"
+        app:layout_constraintRight_toLeftOf="@id/save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rating"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_500"
+        android:layout_marginEnd="8dp"
+        android:text="Save"
+        app:layout_constraintLeft_toRightOf="@id/readMore"
+        app:layout_constraintTop_toBottomOf="@id/price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
