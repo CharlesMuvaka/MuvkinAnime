@@ -30,6 +30,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(logBind.getRoot());
 
         logBind.btnSign.setOnClickListener(this);
+        logBind.btnLogin.setOnClickListener(this);
+        logBind.checkBox.setOnClickListener(this);
+
         myAuth = FirebaseAuth.getInstance();
         userData = PreferenceManager.getDefaultSharedPreferences(this);
         createAuthListener();
@@ -40,8 +43,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
              FirebaseUser currentUser = firebaseAuth.getCurrentUser();
              if (currentUser != null){
                  startActivity(new Intent(LoginActivity.this, MainActivity.class));
-             }else{
-                 Toast.makeText(LoginActivity.this, "User doesn't exist", Toast.LENGTH_SHORT).show();
              }
 
          };
@@ -55,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }else if (v == logBind.btnLogin){
             login();
         }else if(v == logBind.checkBox){
-            logBind.userName.getEditText().setText(userData.getString(Constants.USERNAME, null));
+            logBind.userName.getEditText().setText(userData.getString(Constants.USER_EMAIL, null));
             logBind.userPhone.getEditText().setText(userData.getString(Constants.USER_PASSWORD, null));
         }
 
