@@ -20,6 +20,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private List<Meal> allMeals;
     Context cont;
 
+    public RecyclerViewAdapter(List<Meal> allMeals, Context cont) {
+        this.allMeals = allMeals;
+        this.cont = cont;
+    }
+
     @NonNull
     @Override
     public MealViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
