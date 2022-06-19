@@ -11,7 +11,7 @@ public class Food {
 
     @SerializedName("meals")
     @Expose
-    private List<Meals> meals = null;
+    private List<Meal> meals = null;
 
     /**
      * No args constructor for use in serialization
@@ -24,16 +24,16 @@ public class Food {
      * 
      * @param meals
      */
-    public Food(List<Meals> meals) {
+    public Food(List<Meal> meals) {
         super();
         this.meals = meals;
     }
 
-    public List<Meals> getMeals() {
+    public List<Meal> getMeals() {
         return meals;
     }
 
-    public void setMeals(List<Meals> meals) {
+    public void setMeals(List<Meal> meals) {
         this.meals = meals;
     }
 
