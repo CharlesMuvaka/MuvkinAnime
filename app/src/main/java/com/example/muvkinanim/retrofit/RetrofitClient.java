@@ -10,7 +10,7 @@ public class RetrofitClient {
     public static ApiMeal mealClient(){
         if(retrofit == null){
 
-            retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).build();
+            retrofit = new Retrofit.Builder().baseUrl("https://www.themealdb.com/api/json/v1/1/").addConverterFactory(GsonConverterFactory.create()).build();
         }
         return retrofit.create(ApiMeal.class);
     }
