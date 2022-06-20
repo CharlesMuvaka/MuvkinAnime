@@ -7,6 +7,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.muvkinanim.fragments.MealDetailFragment;
+import com.example.muvkinanim.models.Meal;
+
+import java.util.List;
 
 public class FragmentMealAdapter extends FragmentPagerAdapter {
     List<Meal> allMeals;
@@ -30,6 +33,6 @@ public class FragmentMealAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return allCats.get(position).getStrMeal();
+        return allMeals.get(position).getStrMeal();
     }
 }
