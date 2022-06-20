@@ -5,15 +5,13 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
-android:background="@drawable/img"
-android:backgroundTint="@color/white2"
+android:backgroundTint="@color/purple_500"
 android:layout_height="match_parent"
 tools:context=".fragments.MealDetailFragment">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:background="@drawable/img"
-    android:backgroundTint="@color/white2"
+    android:backgroundTint="@color/purple_500"
     android:layout_height="wrap_content"
     >
 
@@ -22,6 +20,7 @@ tools:context=".fragments.MealDetailFragment">
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/samosa"
         app:shapeAppearanceOverlay="@style/radii"
         android:layout_marginTop="8dp"
@@ -31,8 +30,8 @@ tools:context=".fragments.MealDetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cont1"
-        android:background="@drawable/img"
-        android:backgroundTint="@color/splash"
+        android:background="@drawable/main"
+        android:backgroundTint="@color/purple_500"
         android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
