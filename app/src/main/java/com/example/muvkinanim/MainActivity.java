@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home:
                         return true;
                     case R.id.favourites:
-                        startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+                        startActivity(new Intent(getApplicationContext(), MealDetailActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
