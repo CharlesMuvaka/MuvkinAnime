@@ -9,12 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.muvkinanim.R;
+import com.example.muvkinanim.models.Meal;
 
 import java.io.Serializable;
 
 
 public class MealDetailFragment extends Fragment {
-    Serializable fragmentMeal;
+    Meal fragmentMeal;
 
 
 
@@ -36,7 +37,7 @@ public class MealDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            fragmentMeal = getArguments().getSerializable("meal");
+            fragmentMeal = (Meal) getArguments().getSerializable("meal");
         }
     }
 
