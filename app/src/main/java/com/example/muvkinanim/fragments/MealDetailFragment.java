@@ -8,12 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.muvkinanim.R;
+
 import com.example.muvkinanim.databinding.FragmentMealDetailBinding;
+import com.example.muvkinanim.models.Constants;
 import com.example.muvkinanim.models.Meal;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import java.io.Serializable;
+
 
 
 public class MealDetailFragment extends Fragment {
@@ -67,6 +72,14 @@ public class MealDetailFragment extends Fragment {
         detBind.instr4.setText(fragmentMeal.getStrMeasure4());
         detBind.instr5.setText(fragmentMeal.getStrMeasure5());
         detBind.desc.setText(fragmentMeal.getStrInstructions());
+
+        detBind.fragSave.setOnClickListener(v1 -> {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String userId = user.getUid();
+
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(Constants.USER_MEALS);
+            reference.child(userId).child(fragmentMeal.getIdMeal()).setValue(fragmentMeal);
+        });
 
         return v;
     }
