@@ -26,7 +26,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MealViewHolder> {
-    private List<Meal> allMeals;
+    List<Meal> allMeals;
     Context cont;
 
     public RecyclerViewAdapter(List<Meal> allMeals, Context cont) {
@@ -70,6 +70,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             save = itemView.findViewById(R.id.save);
             position = getLayoutPosition();
             this.cont = context;
+
+            readMore.setOnClickListener(this);
+            save.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         public void setMealData(Meal meal){
@@ -86,12 +90,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 detail.putExtra("FragmentMeal", (Serializable) allMeals);
                 detail.putExtra("position", position);
                 cont.startActivity(detail);
-            }else{
+            }if (v == save){
                 FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                 String userId = currentUser.getUid();
+                meal.setUserIdMeal(userId);
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(Constants.USER_MEALS);
 
-                reference.child(userId).child(meal.getIdMeal()).setValue(meal);
+                reference.child(meal.getUserIdMeal()).child(meal.getIdMeal()).setValue(meal);
             }
 
         }
