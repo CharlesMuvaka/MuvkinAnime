@@ -33,6 +33,7 @@ public class FragmentMealAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
+
         return allMeals.get(position).getStrMeal();
     }
 }
