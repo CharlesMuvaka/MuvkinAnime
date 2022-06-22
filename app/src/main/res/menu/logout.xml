@@ -8,5 +8,12 @@
         app:showAsAction="never"
         android:visible="true"/>
 
+    <item
+        android:id="@+id/search"
+        android:title="Enter any letter to see meals"
+        android:icon="@drawable/search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom"/>
+
 
 </menu>
