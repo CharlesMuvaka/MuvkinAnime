@@ -12,6 +12,9 @@ public class Meal implements Serializable {
     @SerializedName("idMeal")
     @Expose
     private String idMeal;
+    @SerializedName("userIdMeal")
+    @Expose
+    private String userIdMeal;
     @SerializedName("strMeal")
     @Expose
     private String strMeal;
@@ -287,6 +290,14 @@ public class Meal implements Serializable {
         this.strImageSource = strImageSource;
         this.strCreativeCommonsConfirmed = strCreativeCommonsConfirmed;
         this.dateModified = dateModified;
+    }
+
+    public String getUserIdMeal() {
+        return userIdMeal;
+    }
+
+    public void setUserIdMeal(String userIdMeal) {
+        this.userIdMeal = userIdMeal;
     }
 
     public String getIdMeal() {
