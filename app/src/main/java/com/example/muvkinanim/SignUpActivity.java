@@ -94,8 +94,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         ).show();
                     }
                 });
-                Toast.makeText(this, "Successfully created " + task.getResult().getUser().getDisplayName(), Toast.LENGTH_LONG
-                ).show();
+
             }else{
                 Toast.makeText(this, "User Creation Failed", Toast.LENGTH_LONG).show();
             }
