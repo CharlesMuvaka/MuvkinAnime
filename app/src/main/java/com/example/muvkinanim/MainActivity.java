@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 
 import com.example.muvkinanim.adapters.RecyclerViewAdapter;
 import com.example.muvkinanim.databinding.ActivityMainBinding;
@@ -39,15 +41,66 @@ public class MainActivity extends AppCompatActivity {
 
         mainBind.bottomNav.setSelectedItemId(R.id.home);
         navigationBarClick(mainBind.bottomNav);
-        makeApiCall();
-
+        makeApiCall("d");
 
 
     }
 
-    private void makeApiCall() {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+         super.onCreateOptionsMenu(menu);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.logout, menu);
+
+        MenuItem item = menu.findItem(R.id.search);
+        SearchView userSearch = (SearchView) item.getActionView();
+        userSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (query.length() != 1){
+                    mainBind.welcome.setTextColor(Color.RED);
+                    mainBind.welcome.setText("Please enter a single character");
+                    mainBind.welcome.setVisibility(View.VISIBLE);
+                }else{
+                    makeApiCall(query);
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.logout){
+            logout();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void makeApiCall(String query) {
         ApiMeal getMeals = RetrofitClient.mealClient();
-        Call<Food> foodCall = getMeals.getMeals("g");
+        Call<Food> foodCall = getMeals.getMeals(query);
 
         foodCall.enqueue(new Callback<Food>() {
             @Override
@@ -75,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
     public void successful(){
         mainBind.progress.setVisibility(View.GONE);
         mainBind.welcome.setVisibility(View.VISIBLE);
+        mainBind.welcome.setText("Welcome "+ FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
         mainBind.recView.setVisibility(View.VISIBLE);
     }
 
@@ -94,34 +148,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-         super.onCreateOptionsMenu(menu);
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.logout, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.logout){
-            logout();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void logout() {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
 
     public void navigationBarClick(BottomNavigationView bottomNav){
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -131,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home:
                         return true;
                     case R.id.favourites:
-                        startActivity(new Intent(getApplicationContext(), MealDetailActivity.class));
+                        startActivity(new Intent(MainActivity.this, FavouritesActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
