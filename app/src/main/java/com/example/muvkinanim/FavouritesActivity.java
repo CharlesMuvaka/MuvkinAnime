@@ -16,6 +16,7 @@ import com.example.muvkinanim.databinding.ActivityMainBinding;
 import com.example.muvkinanim.models.Constants;
 import com.example.muvkinanim.models.Meal;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +32,7 @@ public class FavouritesActivity extends AppCompatActivity {
     DatabaseReference ref;
     List<Meal> favouriteMeals;
     RecyclerViewAdapter adp;
+    FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +41,10 @@ public class FavouritesActivity extends AppCompatActivity {
         mainBind = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBind.getRoot());
 
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        ref = FirebaseDatabase.getInstance().getReference(Constants.USER_MEALS).child(userId);
+        ref = firebaseDatabase.getReference(Constants.USER_MEALS).child(userId);
 
         favouriteMeals = new ArrayList<>();
         adp = new RecyclerViewAdapter(favouriteMeals, FavouritesActivity.this);
