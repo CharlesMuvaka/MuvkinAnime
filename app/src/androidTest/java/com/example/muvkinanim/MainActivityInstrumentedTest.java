@@ -18,7 +18,7 @@ public class MainActivityInstrumentedTest {
 
 
     @Rule
-    public ActivityScenarioRule<FavouritesActivity> fireRule = new ActivityScenarioRule<>(FavouritesActivity.class);
+    public ActivityScenarioRule<MainActivity> fireRule = new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
     public void checkTextViewVisibility() {
