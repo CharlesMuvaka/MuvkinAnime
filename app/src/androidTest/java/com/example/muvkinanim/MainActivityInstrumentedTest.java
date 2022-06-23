@@ -22,7 +22,7 @@ public class MainActivityInstrumentedTest {
 
     @Test
     public void checkTextViewVisibility() {
-        onView(withId(R.id.welcome)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
+        onView(withId(R.id.welcome)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
     }
 
     @Test
