@@ -39,7 +39,7 @@ These instructions will get you a copy of the project up and running on your loc
 * Clone this repository to a location in your file system.
 * Open terminal command line then navigate to the root folder of the application.
   ```
-    $ git clone  https://github.com/CharlesMuvaka12345/heroSquad.git
+    $ git clone  https://github.com/CharlesMuvaka/MuvkinAnime.git
     $ cd ../path/to/the/file
   
    ```
