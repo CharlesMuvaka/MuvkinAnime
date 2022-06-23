@@ -34,9 +34,16 @@ public class LoginActivityInstrumentedTest {
     }
 
     @Test
+    public void clickCheckButton(){
+        onView(withId(R.id.checkBox)).perform(click());
+    }
+
+    @Test
     public void clickLoginButton(){
         onView(withId(R.id.btnLogin)).perform(click());
     }
+
+
 
     @Test
     public void clickSinUpButton(){
