@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.muvkinanim.databinding.ActivityLoginBinding;
 import com.example.muvkinanim.models.Constants;
+import com.example.muvkinanim.models.Validator;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -67,6 +68,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void login() {
         String email = logBind.userName.getEditText().getText().toString().trim();
         String pass = logBind.userPhone.getEditText().getText().toString().trim();
+
+        if(!Validator.validateName(logBind.userName) || !Validator.validatePassword(logBind.userPhone)){
+            return;
+        }
 
         myAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(this, task -> {
             if (task.isSuccessful()){
