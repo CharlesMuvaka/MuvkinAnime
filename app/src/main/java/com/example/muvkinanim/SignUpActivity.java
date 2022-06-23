@@ -16,6 +16,7 @@ import com.example.muvkinanim.models.User;
 import com.example.muvkinanim.models.Validator;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -35,6 +36,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         signBind = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(signBind.getRoot());
 
+        FirebaseApp.initializeApp(this);
         myAuth = FirebaseAuth.getInstance();
         myData = PreferenceManager.getDefaultSharedPreferences(this);
         myDataEditor = myData.edit();
