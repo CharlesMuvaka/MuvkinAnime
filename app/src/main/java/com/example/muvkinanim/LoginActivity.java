@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.muvkinanim.databinding.ActivityLoginBinding;
 import com.example.muvkinanim.models.Constants;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         logBind.btnLogin.setOnClickListener(this);
         logBind.checkBox.setOnClickListener(this);
 
+        FirebaseApp.initializeApp(this);
         myAuth = FirebaseAuth.getInstance();
         userData = PreferenceManager.getDefaultSharedPreferences(this);
         createAuthListener();
